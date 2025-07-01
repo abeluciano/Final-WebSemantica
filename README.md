@@ -38,10 +38,9 @@ cp .env.example .env
 sudo chown 100:101 ./volumes -R
 sudo chown 999:999 ./volumes/db -R
 chmod -R 777 fuseki/dataset
-chmod -R 777 rdf-output
 ```
 
-Esto permite que los contenedores `ojs`, `mariadb`, `rdf-exporter` y `fuseki` puedan leer/escribir.
+Esto permite que los contenedores `ojs`, `mariadb` y `fuseki` puedan leer/escribir.
 
 ### 4. Levanta todos los servicios
 
