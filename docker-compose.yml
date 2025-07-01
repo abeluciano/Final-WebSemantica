@@ -7,12 +7,15 @@ services:
     image: mariadb:11.4
 #    env_file:
 #      - .env
-    container_name: "ojs_db_${COMPOSE_PROJECT_NAME:-demo}"
+#    container_name: "ojs_db_${COMPOSE_PROJECT_NAME:-demo}"
     environment:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:-ojsPwd}"
       MYSQL_DATABASE: "${OJS_DB_NAME:-ojs}"
       MYSQL_USER: "${OJS_DB_USER:-ojs}"
       MYSQL_PASSWORD: "${OJS_DB_PASSWORD:-ojsPwd}"
+
+    ports:
+      - "3366:3306"
     volumes:
       - ./volumes/db:/var/lib/mysql
       - ./volumes/db-import:/docker-entrypoint-initdb.d
@@ -37,7 +40,6 @@ services:
       - ./volumes/public:/var/www/html/public
 #      - ./volumes/logs/app:/var/log/apache2
 #      # WARNING: You can only enable file-volumes if file exists in the container.
-      - ./volumes/config/ojs.config.inc.php:/var/www/html/config.inc.php
 #      - ./volumes/config/apache.htaccess:/var/www/html/.htaccess
 #      - ./volumes/php.custom.ini:/usr/local/etc/php/conf.d/custom.ini
 
@@ -46,3 +48,61 @@ services:
     depends_on:
       - db
     restart: unless-stopped
+
+  rdf_exporter:
+    build:
+      context: ./rdf-exporter
+    container_name: rdf_exporter
+    depends_on:
+      - db
+    volumes:
+      - ./fuseki/dataset:/app/output
+    networks:
+      inside:
+        aliases:
+          - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: ojs
+      DB_PASSWORD: 961492055
+      DB_NAME: ojs
+      
+  fuseki:
+    image: stain/jena-fuseki
+    container_name: fuseki_ojs
+    ports:
+      - "3030:3030"
+    volumes:
+      - ./fuseki/config.ttl:/fuseki/config.ttl
+      - ./fuseki/dataset:/fuseki-data
+    command: ["/jena-fuseki/fuseki-server", "--config", "/fuseki/config.ttl"]
+    networks:
+      - inside
+    depends_on:
+      - rdf_exporter
+
+  api:
+    build:
+      context: ./rdf-api
+    container_name: rdf_api
+    depends_on:
+      - fuseki
+    ports:
+      - "8000:8000"
+    networks:
+      - inside
+      
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend_ojs
+    ports:
+      - "5173:80"
+    networks:
+      - inside
+    depends_on:
+      - api  # Asegúrate de que tu FastAPI esté definido como "api"
+    environment:
+      VITE_API_URL: http://api:8000
+

@@ -1,2 +1,15 @@
-.swp
-.sandbox
+# Archivos de entorno
+.env
+
+# Node modules
+**/node_modules/
+
+# Archivos generados por Docker
+volumes/db/
+volumes/private/
+rdf-output/
+
+# Configuración personal
+.DS_Store
+*.log
+

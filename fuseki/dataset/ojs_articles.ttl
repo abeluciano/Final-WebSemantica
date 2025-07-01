@@ -1,0 +1,307 @@
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/article/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema1: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:1001 a bibo:Article ;
+    dct:abstract "Este artículo discute aplicaciones de IA en contextos educativos."@en-US ;
+    dct:creator <http://example.org/person/Ana_Pérez> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-27"^^xsd:date ;
+    dct:subject "inteligencia artificial, educación, tecnología" ;
+    dct:title "Inteligencia Artificial en Educación"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.001" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/ia-en-educacion> .
+
+ex:1002 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 2 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor2_Apellido2> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "datos abiertos, semántica, metadatos" ;
+    dct:title "Artículo de Investigación N°2"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.002" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-2> .
+
+ex:1003 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 3 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor3_Apellido3> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "educación, aprendizaje automático, big data" ;
+    dct:title "Artículo de Investigación N°3"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.003" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-3> .
+
+ex:1004 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 4 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor4_Apellido4> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "inteligencia artificial, ética, tecnología" ;
+    dct:title "Artículo de Investigación N°4"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.004" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-4> .
+
+ex:1005 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 5 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor5_Apellido5> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "datos abiertos, semántica, metadatos" ;
+    dct:title "Artículo de Investigación N°5"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.005" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-5> .
+
+ex:1006 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 6 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor6_Apellido6> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "educación, aprendizaje automático, big data" ;
+    dct:title "Artículo de Investigación N°6"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.006" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-6> .
+
+ex:1007 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 7 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor7_Apellido7> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "inteligencia artificial, ética, tecnología" ;
+    dct:title "Artículo de Investigación N°7"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.007" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-7> .
+
+ex:1008 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 8 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor8_Apellido8> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "datos abiertos, semántica, metadatos" ;
+    dct:title "Artículo de Investigación N°8"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.008" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-8> .
+
+ex:1009 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 9 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor9_Apellido9> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "educación, aprendizaje automático, big data" ;
+    dct:title "Artículo de Investigación N°9"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.009" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-9> .
+
+ex:1010 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 10 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor10_Apellido10> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "inteligencia artificial, ética, tecnología" ;
+    dct:title "Artículo de Investigación N°10"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.010" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-10> .
+
+ex:1011 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 11 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor11_Apellido11> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "datos abiertos, semántica, metadatos" ;
+    dct:title "Artículo de Investigación N°11"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.011" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-11> .
+
+ex:1012 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 12 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor12_Apellido12> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "educación, aprendizaje automático, big data" ;
+    dct:title "Artículo de Investigación N°12"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.012" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-12> .
+
+ex:1013 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 13 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor13_Apellido13> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "inteligencia artificial, ética, tecnología" ;
+    dct:title "Artículo de Investigación N°13"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.013" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-13> .
+
+ex:1014 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 14 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor14_Apellido14> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "datos abiertos, semántica, metadatos" ;
+    dct:title "Artículo de Investigación N°14"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.014" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-14> .
+
+ex:1015 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 15 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor15_Apellido15> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "educación, aprendizaje automático, big data" ;
+    dct:title "Artículo de Investigación N°15"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.015" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-15> .
+
+ex:1016 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 16 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor16_Apellido16> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "inteligencia artificial, ética, tecnología" ;
+    dct:title "Artículo de Investigación N°16"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.016" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-16> .
+
+ex:1017 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 17 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor17_Apellido17> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "datos abiertos, semántica, metadatos" ;
+    dct:title "Artículo de Investigación N°17"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.017" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-17> .
+
+ex:1018 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 18 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor18_Apellido18> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "educación, aprendizaje automático, big data" ;
+    dct:title "Artículo de Investigación N°18"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.018" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-18> .
+
+ex:1019 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 19 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor19_Apellido19> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "inteligencia artificial, ética, tecnología" ;
+    dct:title "Artículo de Investigación N°19"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.019" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-19> .
+
+ex:1020 a bibo:Article ;
+    dct:abstract "Este artículo aborda el tema número 20 en profundidad."@en-US ;
+    dct:creator <http://example.org/person/Autor20_Apellido20> ;
+    dct:isPartOf "Artículos de Investigación" ;
+    dct:issued "2025-06-28"^^xsd:date ;
+    dct:subject "datos abiertos, semántica, metadatos" ;
+    dct:title "Artículo de Investigación N°20"@en-US ;
+    bibo:doi "10.1234/ojs.ai.2025.020" ;
+    foaf:page <http://172.29.164.75:8081/index.php/journal/article/view/articulo-20> .
+
+<http://example.org/person/Ana_Pérez> a foaf:Person ;
+    schema1:affiliation "Universidad de la IA" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0097> ;
+    foaf:name "Ana Pérez" .
+
+<http://example.org/person/Autor10_Apellido10> a foaf:Person ;
+    schema1:affiliation "Universidad Tecnológica" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0010> ;
+    foaf:name "Autor10 Apellido10" .
+
+<http://example.org/person/Autor11_Apellido11> a foaf:Person ;
+    schema1:affiliation "Instituto de Ciencias Avanzadas" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0011> ;
+    foaf:name "Autor11 Apellido11" .
+
+<http://example.org/person/Autor12_Apellido12> a foaf:Person ;
+    schema1:affiliation "Universidad Tecnológica" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0012> ;
+    foaf:name "Autor12 Apellido12" .
+
+<http://example.org/person/Autor13_Apellido13> a foaf:Person ;
+    schema1:affiliation "Instituto de Ciencias Avanzadas" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0013> ;
+    foaf:name "Autor13 Apellido13" .
+
+<http://example.org/person/Autor14_Apellido14> a foaf:Person ;
+    schema1:affiliation "Universidad Tecnológica" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0014> ;
+    foaf:name "Autor14 Apellido14" .
+
+<http://example.org/person/Autor15_Apellido15> a foaf:Person ;
+    schema1:affiliation "Instituto de Ciencias Avanzadas" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0015> ;
+    foaf:name "Autor15 Apellido15" .
+
+<http://example.org/person/Autor16_Apellido16> a foaf:Person ;
+    schema1:affiliation "Universidad Tecnológica" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0016> ;
+    foaf:name "Autor16 Apellido16" .
+
+<http://example.org/person/Autor17_Apellido17> a foaf:Person ;
+    schema1:affiliation "Instituto de Ciencias Avanzadas" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0017> ;
+    foaf:name "Autor17 Apellido17" .
+
+<http://example.org/person/Autor18_Apellido18> a foaf:Person ;
+    schema1:affiliation "Universidad Tecnológica" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0018> ;
+    foaf:name "Autor18 Apellido18" .
+
+<http://example.org/person/Autor19_Apellido19> a foaf:Person ;
+    schema1:affiliation "Instituto de Ciencias Avanzadas" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0019> ;
+    foaf:name "Autor19 Apellido19" .
+
+<http://example.org/person/Autor20_Apellido20> a foaf:Person ;
+    schema1:affiliation "Universidad Tecnológica" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0020> ;
+    foaf:name "Autor20 Apellido20" .
+
+<http://example.org/person/Autor2_Apellido2> a foaf:Person ;
+    schema1:affiliation "Universidad Tecnológica" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0002> ;
+    foaf:name "Autor2 Apellido2" .
+
+<http://example.org/person/Autor3_Apellido3> a foaf:Person ;
+    schema1:affiliation "Instituto de Ciencias Avanzadas" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0003> ;
+    foaf:name "Autor3 Apellido3" .
+
+<http://example.org/person/Autor4_Apellido4> a foaf:Person ;
+    schema1:affiliation "Universidad Tecnológica" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0004> ;
+    foaf:name "Autor4 Apellido4" .
+
+<http://example.org/person/Autor5_Apellido5> a foaf:Person ;
+    schema1:affiliation "Instituto de Ciencias Avanzadas" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0005> ;
+    foaf:name "Autor5 Apellido5" .
+
+<http://example.org/person/Autor6_Apellido6> a foaf:Person ;
+    schema1:affiliation "Universidad Tecnológica" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0006> ;
+    foaf:name "Autor6 Apellido6" .
+
+<http://example.org/person/Autor7_Apellido7> a foaf:Person ;
+    schema1:affiliation "Instituto de Ciencias Avanzadas" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0007> ;
+    foaf:name "Autor7 Apellido7" .
+
+<http://example.org/person/Autor8_Apellido8> a foaf:Person ;
+    schema1:affiliation "Universidad Tecnológica" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0008> ;
+    foaf:name "Autor8 Apellido8" .
+
+<http://example.org/person/Autor9_Apellido9> a foaf:Person ;
+    schema1:affiliation "Instituto de Ciencias Avanzadas" ;
+    foaf:isPrimaryTopicOf <https://orcid.org/0000-0002-1825-0009> ;
+    foaf:name "Autor9 Apellido9" .
+
