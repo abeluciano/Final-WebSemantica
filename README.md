@@ -58,6 +58,7 @@ docker compose up --build -d
 | 📰 OJS           | [http://localhost:8081](http://localhost:8081)                       |
 | 🔄 API FastAPI   | [http://localhost:8000](http://localhost:8000)                       |
 | 🧠 Fuseki SPARQL | [http://localhost:3030/ojs/sparql](http://localhost:3030/ojs/sparql) |
+| 🌐 FrontEnd   | [http://localhost:5173](http://localhost:5173))                         |
 
 ---
 
