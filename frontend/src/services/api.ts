@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_BASE = import.meta.env.VITE_API_URL || "https://serverdares.tail71afcf.ts.net";
 
 // Interfaces
 export type Article = {
@@ -74,7 +74,10 @@ export const getAutoresTop = async (): Promise<TopAuthor[]> => {
 
 export const getAutores = async (): Promise<TopAuthor[]> => {
   const res = await axios.get(`${API_BASE}/autores`);
-  return res.data;
+  return res.data.map((name: string) => ({
+    autor: name,
+    publicaciones: 0 // valor neutro o ficticio
+  }));
 };
 
 export const getSecciones = async (): Promise<string[]> => {

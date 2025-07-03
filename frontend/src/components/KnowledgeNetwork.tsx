@@ -3,7 +3,11 @@ import {
   getArticulos, 
   getAutores, 
   getSeccionesMasActivas, 
-  getAutoresTop
+  getAutoresTop,
+  getArticulosPorKeywords,
+  getArticulosPorInstitucion,
+  getArticulosRelacionados,
+  getArticulosPorKeyword
 } from '../services/api';
 import type { Article, Section, TopAuthor } from '../services/api';
 import RDFGraph from './RDFGraph';
@@ -49,29 +53,91 @@ export default function KnowledgeNetwork() {
     loadInitialData();
   }, []);
 
-  const buildRDFGraph = (articles: Article[]): any[] => {
+  const buildRDFGraph = (articles: any[]): any[] => {
     const triples: any[] = [];
 
-    // Añadir nodos de artículos
     articles.forEach(article => {
+      const articleURI = `article:${article.doi}`;
+      const authorURI = `author:${article.autor}`;
+
+      // Nodo tipo Artículo
       triples.push({
-        subject: `article:${article.doi}`,
+        subject: articleURI,
         predicate: 'type',
         object: 'article',
-        titulo: article.titulo,
-        autor: article.autor
+        titulo: article.titulo
       });
 
-      // Añadir relaciones entre artículos y autores
+      // Relación Artículo - Autor
       triples.push({
-        subject: `article:${article.doi}`,
+        subject: articleURI,
         predicate: 'hasAuthor',
-        object: `author:${article.autor}`
+        object: authorURI
       });
+
+      // Nodo Autor
+      triples.push({
+        subject: authorURI,
+        predicate: 'type',
+        object: 'author',
+        name: article.autor
+      });
+
+      // Sección (si disponible)
+      if (article.seccion) {
+        const sectionURI = `section:${article.seccion}`;
+        triples.push({
+          subject: articleURI,
+          predicate: 'hasSection',
+          object: sectionURI
+        });
+        triples.push({
+          subject: sectionURI,
+          predicate: 'type',
+          object: 'section',
+          name: article.seccion
+        });
+      }
+
+      // Institución (si disponible)
+      if (article.institucion) {
+        const instURI = `inst:${article.institucion}`;
+        triples.push({
+          subject: articleURI,
+          predicate: 'hasInstitution',
+          object: instURI
+        });
+        triples.push({
+          subject: instURI,
+          predicate: 'type',
+          object: 'institution',
+          name: article.institucion
+        });
+      }
+
+      // Palabras clave
+      if (article.keywords) {
+        const keywords = article.keywords.split(',').map((k: string) => k.trim());
+        keywords.forEach((kw: any) => {
+          const kwURI = `keyword:${kw}`;
+          triples.push({
+            subject: articleURI,
+            predicate: 'hasKeyword',
+            object: kwURI
+          });
+          triples.push({
+            subject: kwURI,
+            predicate: 'type',
+            object: 'keyword',
+            name: kw
+          });
+        });
+      }
     });
 
     return triples;
   };
+
 
   const handleNodeClick = (node: any) => {
     if (node.doi) {
@@ -93,20 +159,37 @@ export default function KnowledgeNetwork() {
 
   const handleSearch = async (query: string) => {
     try {
-      // Aquí deberías implementar la lógica de búsqueda según el tipo de query
-      // Por ejemplo:
-      if (query.startsWith('articulo:')) {
-        const results = await getArticulos();
+      if (query.startsWith('autor:')) {
+        const autorBuscado = query.replace('autor:', '');
+        const results = await getArticulos(autorBuscado);
         setArticles(results);
+        setRdfData(await buildRDFGraph(results));
+      } else if (query.startsWith('articulo:')) {
+        const term = query.split(':')[1];
+        const results = await getArticulos(term);
+        setArticles(results);
+        setRdfData(await buildRDFGraph(results));
       } else if (query.startsWith('autor:')) {
-        const results = await getAutores();
-        setTopAuthors(results);
+        const term = query.split(':')[1];
+        const results = await getArticulos(term); // buscar artículos por autor
+        setArticles(results);
+        setRdfData(await buildRDFGraph(results));
+      } else if (query.startsWith('institucion:')) {
+        const term = query.split(':')[1];
+        const results = await getArticulosPorInstitucion(term);
+        setArticles(results);
+        setRdfData(await buildRDFGraph(results));
+      } else if (query.startsWith('keywords:')) {
+        const term = query.split(':')[1];
+        const results = await getArticulosPorKeyword(term);
+        setArticles(results);
+        setRdfData(await buildRDFGraph(results));
       }
-      // ... etc
     } catch (error) {
-      console.error('Error searching:', error);
+      console.error('Error en búsqueda:', error);
     }
   };
+
 
   const handleFilterChange = (filters: { section?: string, author?: string, institution?: string }) => {
     // Aquí deberías implementar la lógica de filtrado
@@ -114,40 +197,39 @@ export default function KnowledgeNetwork() {
   };
 
   return (
-    <div className="knowledge-network" style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
-      <div className="main-content" style={{width: '100%', maxWidth: '1200px', margin: '0 auto'}}>
-        <div className="filters-row" style={{width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem'}}>
-          <SearchBar 
-            onSearch={handleSearch}
-            onFilterChange={handleFilterChange}
-          />
+    <div className="container-fluid py-4">
+      <div className="row mb-3">
+        <div className="col">
+          <SearchBar onSearch={handleSearch} onFilterChange={handleFilterChange} />
         </div>
-        <div style={{display: 'flex', flexDirection: 'row', width: '100%'}}>
-          <section className="network-container" style={{flex: 3, height: '70vh', minHeight: '400px', position: 'relative', overflow: 'hidden'}}>
-            <RDFGraph 
+      </div>
+
+      <div className="row">
+        <div className="col-lg-8 mb-4">
+          <div className="bg-light border rounded p-2" style={{ height: '70vh', minHeight: '400px' }}>
+            <RDFGraph
               data={rdfData}
               selectedNode={selectedNode}
               onNodeClick={handleNodeClick}
             />
-          </section>
-          <aside className="side-panel-rect" style={{flex: 1, maxWidth: '340px', minWidth: '260px', height: '70vh', minHeight: '400px', background: '#fff', borderRadius: '16px', boxShadow: '0 2px 12px rgba(33,150,243,0.10)', marginLeft: '2rem', padding: '2rem 1.5rem', overflowY: 'auto', display: 'flex', flexDirection: 'column'}}>
-            <div className="stats">
-              <h3>Secciones más activas</h3>
-              <ul>
-                {activeSections.map((section: Section) => (
-                  <li key={section.seccion}>{section.seccion}</li>
+          </div>
+        </div>
+
+        <div className="col-lg-4">
+          <div className="bg-white border rounded p-3" style={{ height: '70vh', overflowY: 'auto' }}>
+            <div className="mb-4">
+              <h5>Secciones más activas</h5>
+              <ul className="list-group">
+                {activeSections.map(section => (
+                  <li key={section.seccion} className="list-group-item">
+                    {section.seccion}
+                  </li>
                 ))}
               </ul>
             </div>
-            <AuthorList 
-              authors={topAuthors}
-              onAuthorClick={(author) => handleNodeClick(author)}
-            />
-            <ArticleList 
-              articles={articles}
-              onArticleClick={(article) => handleNodeClick(article)}
-            />
-          </aside>
+            <AuthorList authors={topAuthors} onAuthorClick={(author) => handleNodeClick(author)} />
+            <ArticleList articles={articles} onArticleClick={(article) => handleNodeClick(article)} />
+          </div>
         </div>
       </div>
     </div>
