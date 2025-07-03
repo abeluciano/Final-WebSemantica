@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
 import { 
-  getArticulos, 
-  getAutores, 
+  getArticulos,
   getSeccionesMasActivas, 
   getAutoresTop,
-  getArticulosPorKeywords,
   getArticulosPorInstitucion,
-  getArticulosRelacionados,
   getArticulosPorKeyword
 } from '../services/api';
 import type { Article, Section, TopAuthor } from '../services/api';
