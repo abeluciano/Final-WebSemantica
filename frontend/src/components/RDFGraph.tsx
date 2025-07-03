@@ -23,18 +23,16 @@ interface Edge {
 
 interface RDFGraphProps {
   data: RDFTriple[];
-  selectedNode: any;
   onNodeClick: (node: any) => void;
 }
 
-export default function RDFGraph({ data, selectedNode, onNodeClick }: RDFGraphProps) {
+export default function RDFGraph({ data, onNodeClick }: RDFGraphProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const networkRef = useRef<Network | null>(null);
 
   useEffect(() => {
     if (!containerRef.current || !data) return;
 
-    // Construir nodos y enlaces
     const nodesMap = new Map<string, Node>();
     const edges: Edge[] = [];
 
